@@ -37,10 +37,10 @@ const makeArrayOfNumbers = function (max) {
   return array;
 };
 const getUserId = function () {
-let NewArray = makeArrayOfNumbers(25);
-let userId = getRandomNumber(NewArray);
-NewArray.splice(NewArray.indexOf(userId), 1);
-return userId;
+  const NewArray = makeArrayOfNumbers(25);
+  const userId = getRandomNumber(NewArray);
+  NewArray.splice(NewArray.indexOf(userId), 1);
+  return userId;
 }
 // данная идея взята с сайта: https://stackoverflow.com/questions/18806210/generating-non-repeating-random-numbers-in-js
 
