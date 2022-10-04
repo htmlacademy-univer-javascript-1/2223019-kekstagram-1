@@ -12,7 +12,7 @@ const checkLengthOfString = function (text, maxLength) {
     return true;
   } else return false;
 }
-var NAMES = [
+const NAMES = [
 'Грегорий',
 'Виктор',
 'Ангелос',
@@ -20,7 +20,7 @@ var NAMES = [
 'Майкл',
 'Игорь'
 ];
-var MESSAGE = [
+const MESSAGE = [
 'Всё отлично!',
 'В целом всё неплохо. Но не всё.',
 'Когда вы делаете фотографию, хорошо бы убирать палец из кадра. В конце концов это просто непрофессионально.',
