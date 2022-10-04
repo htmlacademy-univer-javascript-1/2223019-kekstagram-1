@@ -45,18 +45,17 @@ const getUserId = function () {
 // данная идея взята с сайта: https://stackoverflow.com/questions/18806210/generating-non-repeating-random-numbers-in-js
 
 let photoId = 0;
-  function getPhotoId() {
-    return photoId++;
-  }
+function getPhotoId() {
+  return photoId++;
+}
 const comment = {
-id: getUserId(),
-avatar: `img/avatar-${getRandomNumber(1, 6)}.svg`,
-message: MESSAGE[getRandomNumber(0, MESSAGE.length-1)],
-name: NAMES[getRandomNumber(0, NAMES.length-1)]
+  id: getUserId(),
+  avatar: `img/avatar-${getRandomNumber(1, 6)}.svg`,
+  message: MESSAGE[getRandomNumber(0, MESSAGE.length-1)],
+  name: NAMES[getRandomNumber(0, NAMES.length-1)]
 };
 
 const photo = {
-
   id: getPhotoId,
   url: `photos/${this.id}.jpg`,
   description: 'Здесь должно быть описание',
