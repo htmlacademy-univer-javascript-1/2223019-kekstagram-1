@@ -36,9 +36,12 @@ const makeArrayOfNumbers = function (max) {
   }
   return array;
 };
-const NewArray = makeArrayOfNumbers(25);
-const userId = getRandomNumber(1,25);
+const getUserId = function () {
+let NewArray = makeArrayOfNumbers(25);
+let userId = getRandomNumber(NewArray);
 NewArray.splice(NewArray.indexOf(userId), 1);
+return userId;
+}
 // данная идея взята с сайта: https://stackoverflow.com/questions/18806210/generating-non-repeating-random-numbers-in-js
 
 let photoId = 0;
@@ -46,7 +49,7 @@ let photoId = 0;
     return photoId++;
   }
 const comment = {
-id: userId(),
+id: getUserId(),
 avatar: `img/avatar-${getRandomNumber(1, 6)}.svg`,
 message: MESSAGE[getRandomNumber(0, MESSAGE.length-1)],
 name: NAMES[getRandomNumber(0, NAMES.length-1)]
