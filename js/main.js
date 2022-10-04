@@ -42,8 +42,9 @@ NewArray.splice(NewArray.indexOf(userId), 1);
 // данная идея взята с сайта: https://stackoverflow.com/questions/18806210/generating-non-repeating-random-numbers-in-js
 
 let photoId = 0;
-photoId++;
-
+  function getPhotoId() {
+    return photoId++;
+  }
 const comment = {
 id: userId(),
 avatar: `img/avatar-${getRandomNumber(1, 6)}.svg`,
@@ -52,9 +53,10 @@ name: NAMES[getRandomNumber(0, NAMES.length-1)]
 };
 
 const photo = {
-  id: photoId,
-  url: `photos/${photoId}.jpg`,
-  description: 'Летний пейзаж реки Волга',
+
+  id: getPhotoId,
+  url: `photos/${this.id}.jpg`,
+  description: 'Здесь должно быть описание',
   likes: getRandomNumber(15, 200),
   comments: [comment]
 };
