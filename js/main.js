@@ -6,59 +6,49 @@ const getRandomNumber = function (from, to) {
   } else return 'Вы ввели отрицательные числа';
 
 };
-// источник: https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Math/random
-//const checkLengthOfString = function (text, maxLength) {
-//  if (text >= maxLength) {
-//    return true;
-// } else return false;
-//}
-const NAMES = [
-  'Грегорий',
-  'Виктор',
-  'Ангелос',
-  'Джон',
-  'Майкл',
-  'Игорь'
-];
-const MESSAGE = [
-  'Всё отлично!',
+
+const COMMENTS = ['Всё отлично!',
   'В целом всё неплохо. Но не всё.',
   'Когда вы делаете фотографию, хорошо бы убирать палец из кадра. В конце концов это просто непрофессионально.',
   'Моя бабушка случайно чихнула с фотоаппаратом в руках и у неё получилась фотография лучше.',
   'Я поскользнулся на банановой кожуре и уронил фотоаппарат на кота и у меня получилась фотография лучше.',
-  'Лица у людей на фотке перекошены, как будто их избивают. Как можно было поймать такой неудачный момент?!',
+  'Лица у людей на фотке перекошены, как будто их избивают. Как можно было поймать такой неудачный момент?',
 ];
-
-const makeArrayOfNumbers = function (max) {
-  const array = [];
-  for (let i = 0; i <= max; i++) {
-    array.push(i + 1);
+const NAMES = ['Алексей','Андрей','Виктория','Дмитрий','Игорь','Кристина','Эвелина'];
+function createComments(length){
+  let randomComments = [];
+  let idmas = [];
+  for(let i = 0; i < length; i++){
+    let id = getNonRepetitive(idmas,1,1000);
+    let avatar = `img/avatar-${getRandomNumber(1,6)}.svg`;
+    let message = COMMENTS[getRandomNumber(0,COMMENTS.length)];
+    let name = NAMES[getRandomNumber(0,NAMES.length)];
+    randomComments.push({id,avatar,message,name});
   }
-  return array;
-};
-const getUserId = function () {
-  const NewArray = makeArrayOfNumbers(25);
-  const userId = getRandomNumber(NewArray);
-  NewArray.splice(NewArray.indexOf(userId), 1);
-  return userId;
+  return randomComments;
 }
-// данная идея взята с сайта: https://stackoverflow.com/questions/18806210/generating-non-repeating-random-numbers-in-js
-
-let photoId = 0;
-function getPhotoId() {
-  return photoId++;
+function getNonRepetitive(mas,from,to){
+  let value = getRandomNumber(from,to);
+  while(mas.includes(value)){
+    value = getRandomNumber(from,to);
+  }
+  mas.push(value)
+  return value;
 }
-const comment = {
-  id: getUserId(),
-  avatar: `img/avatar-${getRandomNumber(1, 6)}.svg`,
-  message: MESSAGE[getRandomNumber(0, MESSAGE.length-1)],
-  name: NAMES[getRandomNumber(0, NAMES.length-1)]
-};
+function createObjects(){
+  let objects = [];
+  let idmas = [];
+  let imas = [];
+  for(let j = 0; j < 25;j++){
+    let id = getNonRepetitive(idmas,1,25);
+    let i = getNonRepetitive(imas,1,25);
+    let url = `photos/${i}.jpg`;
+    let description = "myPhoto";
+    let likes = getRandomNumber(15,200);
+    let comments = createComments(3);
+    objects.push({id,url,description,likes,comments})
+  }
+  return objects;
+}
 
-const photo = {
-  id: getPhotoId,
-  url: `photos/${this.id}.jpg`,
-  description: 'Здесь должно быть описание',
-  likes: getRandomNumber(15, 200),
-  comments: [comment]
-};
+
